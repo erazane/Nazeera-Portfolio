@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const titles = ['Frontend Developer', 'UI/UX Designer', 'React Specialist', 'Creative Problem Solver'];
+  
+  useEffect(() => {
+    const currentTitle = titles[currentIndex];
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing effect
+        if (displayText.length < currentTitle.length) {
+          setDisplayText(currentTitle.substring(0, displayText.length + 1));
+        } else {
+          // Wait before deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting effect
+        if (displayText.length > 0) {
+          setDisplayText(currentTitle.substring(0, displayText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setCurrentIndex((prev) => (prev + 1) % titles.length);
+        }
+      }
+    }, isDeleting ? 50 : 100);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentIndex, titles]);
+
   const scrollToAbout = () => {
-    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -25,26 +57,45 @@ const Hero = () => {
           <h1 style={{
             fontSize: 'clamp(3rem, 8vw, 6rem)',
             marginBottom: '1rem',
-            lineHeight: '1.1'
+            lineHeight: '1.1',
+            fontFamily: "'Playfair Display', serif",
+            color: 'var(--text-dark)'
           }}>
-            Constance <span style={{ color: 'var(--midcentury-orange)', display: 'block', fontStyle: 'italic' }}>Souville</span>
+            Nazeera <span style={{ 
+              color: 'var(--midcentury-orange)',
+              display: 'block', 
+              fontStyle: 'italic',
+              fontFamily: "'Playfair Display', serif"
+            }}>Nasharuddin</span>
           </h1>
           
           <div style={{
             marginBottom: '2rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.5rem'
+            gap: '0.5rem',
+            minHeight: '80px'
           }}>
-            <span style={{
+            {/* Typing Animation Container */}
+            <div style={{
               fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
               color: 'var(--midcentury-teal)',
               fontWeight: '500',
               letterSpacing: '2px',
-              textTransform: 'uppercase'
+              textTransform: 'uppercase',
+              minHeight: '2.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.3rem'
             }}>
-              Frontend Developer
-            </span>
+              <span>{displayText}</span>
+              <span style={{ 
+                animation: 'blink 1s infinite',
+                color: 'var(--midcentury-orange)'
+              }}>|</span>
+            </div>
+            
             <span style={{
               fontSize: '1.1rem',
               color: 'var(--midcentury-warmgray)',
@@ -65,50 +116,15 @@ const Hero = () => {
             clean design and user-friendly interfaces. Combining modern 
             development practices with timeless design principles.
           </p>
-          
+          <br></br><br></br>
           <div style={{
             display: 'flex',
             gap: '1rem',
             justifyContent: 'center',
             flexWrap: 'wrap'
           }}>
-            <button 
-              style={{
-                display: 'inline-block',
-                padding: '12px 30px',
-                border: 'none',
-                borderRadius: '4px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                textDecoration: 'none',
-                textAlign: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                fontFamily: 'inherit',
-                background: 'var(--midcentury-orange)',
-                color: 'white'
-              }}
-              onClick={scrollToAbout}
-            >
-              View My Work
-            </button>
-            <a href="#contact" style={{
-              display: 'inline-block',
-              padding: '12px 30px',
-              border: '2px solid var(--midcentury-teal)',
-              borderRadius: '4px',
-              fontSize: '1rem',
-              fontWeight: '600',
-              textDecoration: 'none',
-              textAlign: 'center',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              fontFamily: 'inherit',
-              background: 'transparent',
-              color: 'var(--midcentury-teal)'
-            }}>
-              Get In Touch
-            </a>
+            
+            
           </div>
         </div>
 
@@ -138,6 +154,15 @@ const Hero = () => {
           }
           60% {
             transform: translateX(-50%) translateY(-5px);
+          }
+        }
+        
+        @keyframes blink {
+          0%, 50% {
+            opacity: 1;
+          }
+          51%, 100% {
+            opacity: 0;
           }
         }
       `}</style>

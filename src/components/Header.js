@@ -35,7 +35,8 @@ const Header = () => {
       position: 'fixed',
       top: 0,
       width: '100%',
-      background: isScrolled ? 'rgba(254, 246, 228, 0.98)' : 'rgba(254, 246, 228, 0.95)',
+      background: 'linear-gradient(135deg, var(--midcentury-cream) 0%,  #f0e6d2 50%, var(--midcentury-cream) 100%)',
+      background: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
       backdropFilter: 'blur(10px)',
       zIndex: 1000,
       transition: 'all 0.3s ease',
@@ -56,7 +57,7 @@ const Header = () => {
           fontWeight: '600',
           color: 'var(--midcentury-teal)'
         }}>
-          Constance Souville
+          Nazeera Nashar
         </div>
         
         <nav style={{
