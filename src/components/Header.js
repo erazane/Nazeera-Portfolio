@@ -19,7 +19,8 @@ const Header = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Certificates', href: '#certificates' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '#contact' },
+    {name :'download CV', href: '/Nazeera_Nashar_CV.pdf'}
   ];
 
   const scrollToSection = (href) => {

@@ -101,7 +101,7 @@ const Hero = () => {
               color: 'var(--midcentury-warmgray)',
               fontStyle: 'italic'
             }}>
-              Based in Montreal
+              Based in Kuala Lumpur, Malaysia
             </span>
           </div>
           
@@ -112,9 +112,7 @@ const Hero = () => {
             color: 'var(--text-light)',
             lineHeight: '1.6'
           }}>
-            I create beautiful, functional web experiences with a focus on 
-            clean design and user-friendly interfaces. Combining modern 
-            development practices with timeless design principles.
+            Yo Yo Yo! Its Nazeera, your friendly neighborhood frontend developer and design enthusiast. I craft beautiful and functional web experiences that make users go "Wow!" Let's build something amazing together.
           </p>
           <br></br><br></br>
           <div style={{

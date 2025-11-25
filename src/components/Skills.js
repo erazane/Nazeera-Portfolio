@@ -48,13 +48,15 @@ const Skills = () => {
           <div className="skills-grid-compact">
             {skillCategories.map((category, index) => (
               <div key={category.title} className="skill-category-compact">
+                {/* Header with Icon */}
                 <div className="skill-header-compact">
-                  <div className="skill-icon-compact">
+                  <div className="skill-icon-wrapper-compact">
                     {category.icon}
                   </div>
                   <h3>{category.title}</h3>
                 </div>
                 
+                {/* Skills List */}
                 <div className="skills-list-compact">
                   {category.skills.map((skill) => (
                     <span key={skill} className="skill-tag-compact">
