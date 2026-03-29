@@ -7,19 +7,15 @@ const Footer = () => {
     const socialLinks = [
         {
             name: 'GitHub',
-            url: 'https://github.com/yourusername',
+            url: 'https://github.com/erazane?tab=repositories',
             icon: <Github size={20} />
         },
         {
             name: 'LinkedIn',
-            url: 'https://linkedin.com/in/yourprofile',
+            url: 'https://www.linkedin.com/in/nazeera-nasharuddin-70a795279/',
             icon: <Linkedin size={20} />
         },
-        {
-            name: 'Twitter',
-            url: 'https://twitter.com/yourusername',
-            icon: <Twitter size={20} />
-        },
+        
         {
             name: 'Portfolio',
             url: 'https://yourportfolio.com',
@@ -37,7 +33,7 @@ const Footer = () => {
             borderTop: '1px solid rgba(141, 120, 106, 0.2)'
         }}>
             <p style={{ marginBottom: '1rem' }}>
-                &copy; {currentYear} Constance Souville. All rights reserved.
+                &copy; {currentYear} Nazeera Nasharuddin. All rights reserved.
             </p>
 
             <div className="footer-social-links" style={{ 

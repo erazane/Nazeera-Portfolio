@@ -20,7 +20,8 @@ const Header = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Certificates', href: '#certificates' },
     { name: 'Contact', href: '#contact' },
-    {name :'download CV', href: '/Nazeera_Nashar_CV.pdf'}
+    // PDF download - place your CV at public/CV_NazeeraNasharuddin_2026.pdf
+    { name: 'Download CV', href: '/CV_NazeeraNasharuddin_2026.pdf' }
   ];
 
   const scrollToSection = (href) => {
@@ -66,32 +67,56 @@ const Header = () => {
           gap: '2rem',
           alignItems: 'center'
         }}>
-          {navItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.href)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--text-dark)',
-                fontSize: '1rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-                padding: '0.5rem 0',
-                position: 'relative',
-                transition: 'color 0.3s ease',
-                fontFamily: 'inherit'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.color = 'var(--midcentury-orange)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = 'var(--text-dark)';
-              }}
-            >
-              {item.name}
-            </button>
-          ))}
+          {navItems.map((item) => {
+            const isPdf = typeof item.href === 'string' && item.href.toLowerCase().endsWith('.pdf');
+            if (isPdf) {
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: 'var(--text-dark)',
+                    textDecoration: 'none',
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    padding: '0.5rem 0',
+                    fontFamily: 'inherit'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--midcentury-orange)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-dark)'; }}
+                >
+                  {item.name}
+                </a>
+              );
+            }
+
+            return (
+              <button
+                key={item.name}
+                onClick={() => scrollToSection(item.href)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-dark)',
+                  fontSize: '1rem',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  padding: '0.5rem 0',
+                  position: 'relative',
+                  transition: 'color 0.3s ease',
+                  fontFamily: 'inherit'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--midcentury-orange)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-dark)'; }}
+              >
+                {item.name}
+              </button>
+            );
+          })}
         </nav>
 
         <button 

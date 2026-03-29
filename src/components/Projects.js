@@ -10,26 +10,26 @@ const Projects = () => {
       technologies: ["React", "CSS3", "JavaScript", "Context API"],
       image: "/images/project1.jpg",
       githubUrl: "https://github.com/constance/ecommerce",
-      liveUrl: "https://constance-ecommerce.netlify.app"
+      // liveUrl: "https://constance-ecommerce.netlify.app"
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "CommuniHub: Neighbourhood Management System",
       description: "Productivity application for managing daily tasks with drag-and-drop functionality and local storage persistence.",
       technologies: ["React", "Local Storage", "Custom Hooks", "CSS Grid"],
       image: "/images/project2.jpg",
       githubUrl: "https://github.com/constance/taskapp",
-      liveUrl: "https://constance-tasks.netlify.app"
+      // liveUrl: "https://constance-tasks.netlify.app"
     },
-    {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "Real-time weather application with location detection, 5-day forecast, and beautiful data visualizations.",
-      technologies: ["React", "API Integration", "Chart.js", "Geolocation"],
-      image: "/images/project3.jpg",
-      githubUrl: "https://github.com/constance/weather-app",
-      liveUrl: "https://constance-weather.netlify.app"
-    }
+    // {
+    //   id: 3,
+    //   title: "Weather Dashboard",
+    //   description: "Real-time weather application with location detection, 5-day forecast, and beautiful data visualizations.",
+    //   technologies: ["React", "API Integration", "Chart.js", "Geolocation"],
+    //   image: "/images/project3.jpg",
+    //   githubUrl: "https://github.com/constance/weather-app",
+    //   liveUrl: "https://constance-weather.netlify.app"
+    // }
   ];
 
   return (
@@ -41,7 +41,6 @@ const Projects = () => {
             <div key={project.id} className="card">
               <div style={{
                 height: '200px',
-                background: `linear-gradient(135deg, var(--midcentury-teal), var(--primary))`,
                 borderRadius: '6px',
                 marginBottom: '1.5rem',
                 display: 'flex',
@@ -49,9 +48,10 @@ const Projects = () => {
                 justifyContent: 'center',
                 color: 'white',
                 fontSize: '1.2rem',
-                fontWeight: '600'
+                fontWeight: '600',
+                background: project.image ? `url(${project.image}) center/cover no-repeat` : `linear-gradient(135deg, var(--midcentury-teal), var(--primary))`
               }}>
-                {project.title}
+                {!project.image && project.title}
               </div>
               
               <h3 style={{ marginBottom: '1rem' }}>{project.title}</h3>

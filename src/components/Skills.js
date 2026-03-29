@@ -21,17 +21,17 @@ const Skills = () => {
     {
       icon: <Database size={20} />,
       title: "Databases",
-      skills: ["MongoDB", "Firebase", "PostgreSQL", "Redis", "ORM/ODM"]
+      skills: ["MongoDB", "Firebase" , "MySQL"]
     },
     {
       icon: <Cloud size={20} />,
       title: "Tools & Platforms",
-      skills: ["GitHub", "Docker", "Netlify", "Vercel", "VS Code", "Terminal"]
+      skills: ["GitHub", "Docker", "Vercel", "VS Code", "Terminal"]
     },
     {
       icon: <Cpu size={20} />,
       title: "Technologies",
-      skills: ["TypeScript", "Next.js", "Tailwind CSS", "Jest", "Webpack", "CI/CD"]
+      skills: ["TypeScript", "Next.js", "Tailwind CSS", "Webpack", "CI/CD", "Power Automate", "PowerApps", "SAP ARIBA"]
     }
   ];
 

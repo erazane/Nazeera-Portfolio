@@ -112,7 +112,7 @@ const Hero = () => {
             color: 'var(--text-light)',
             lineHeight: '1.6'
           }}>
-            Yo Yo Yo! Its Nazeera, your friendly neighborhood frontend developer and design enthusiast. I craft beautiful and functional web experiences that make users go "Wow!" Let's build something amazing together.
+            
           </p>
           <br></br><br></br>
           <div style={{

@@ -1,85 +1,76 @@
 import React from 'react';
-import { MapPin, Calendar, ArrowRight, Award, Users, Code2 } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight } from 'lucide-react';
 
 const About = () => {
+  // Use a built-in profile image from the public folder (replace with your photo if desired)
+  // Put your photo at: public/profile.jpg
+  // The project contains `public/profile.JPG` — use that exact filename
+  const profileSrc = '/profile.JPG';
+
   const experience = [
+  
     {
-      period: "2018 - Present",
-      title: "Back-End Developer",
-      company: "Tripian Inc.",
-      location: "Remote",
-      highlights: ["Core team", "PHP/Python", "API design", "AWS"]
+      period: "2025 - Present",
+      title: "RPA Developer | Business Analyst",
+      company: "Cognitive Consulting Sdn Bhd",
+      location: "Kuala Lumpur, Malaysia",
+      highlights: ["Robotic Process Automation", "Low-code development", "OpenAI integration", "Solution design","Process analysis","Business requirements gathering"]
     },
     {
-      period: "2016 - Present",
-      title: "Full-Stack Developer",
-      company: "RadKod",
-      location: "Freelance",
-      highlights: ["Developer collective", "Flutter apps", "Open source"]
-    },
-    {
-      period: "2015 - 2017",
-      title: "Back-End Developer",
-      company: "AvantajBizde",
-      location: "Turkey",
-      highlights: ["E-commerce", "Laravel", "System architecture"]
+      period: "2024 - 2025",
+      title: "Technology Intern ",
+      company: "Petrolium National Berhad (PETRONAS)",
+      location: "Kuala Lumpur, Malaysia",
+      highlights: ["PowerApps", "Power Automate", "Process automation", "Low-code solutions","Software development lifecycle","SAP ARIBA"]
     }
   ];
 
-  const keyMetrics = [
-    {
-      icon: <Calendar size={18} />,
-      value: "8+ Years",
-      label: "Experience"
-    },
-    {
-      icon: <Code2 size={18} />,
-      value: "50+",
-      label: "Projects"
-    },
-    {
-      icon: <Users size={18} />,
-      value: "10+",
-      label: "Teams"
-    }
-  ];
+ 
 
   return (
     <section id="about" className="section">
       <div>
         <h2>About Me</h2>
-        
+
         <div className="grid grid-2" style={{ gap: '2rem', alignItems: 'start' }}>
           {/* Left Column - Profile */}
           <div>
             <div className="card" style={{ padding: '1.5rem', textAlign: 'center' }}>
-              <div style={{
-                width: '100px',
-                height: '100px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, var(--midcentury-orange), var(--accent))',
-                margin: '0 auto 1rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '2rem',
-                fontWeight: 'bold'
-              }}>
-                CN
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  width: '140px',
+                  height: '140px',
+                  borderRadius: '50%',
+                  margin: '0 auto 0.75rem',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'linear-gradient(135deg, var(--midcentury-orange), var(--accent))'
+                }}>
+                  <img
+                    src={profileSrc}
+                    alt="Profile"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/logo512.png'; }}
+                  />
+                </div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--midcentury-warmgray)' }}>
+                  Profile photo
+                </div>
               </div>
-              
+
               <h3 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-dark)' }}>
-                Constance
+                Nazeera Nasharuddin
               </h3>
-              
+
               <p style={{ 
                 margin: '0 0 1rem 0', 
                 color: 'var(--midcentury-orange)',
                 fontWeight: '600',
                 fontSize: '0.9rem'
               }}>
-                Full-Stack Developer
+                RPA Developer | Business Analyst
               </p>
 
               <p style={{ 
@@ -88,7 +79,7 @@ const About = () => {
                 fontSize: '0.9rem',
                 marginBottom: '1rem'
               }}>
-                8+ years building scalable web applications with focus on clean code and user experience.
+                A software engineering graduate with a passion of web development and automation. I am a highly motivated and detail-oriented individual with a strong foundation in software development principles and practices. I have experience in developing web applications using various programming languages and frameworks, and I am always eager to learn new technologies and improve my skills. I am a team player who enjoys collaborating with others to solve complex problems and deliver high-quality solutions.
               </p>
 
               <div style={{
@@ -100,42 +91,7 @@ const About = () => {
                 fontSize: '0.85rem'
               }}>
                 <MapPin size={14} />
-                <span>Montreal, Canada</span>
-              </div>
-            </div>
-
-            {/* Key Metrics */}
-            <div className="card" style={{ padding: '1.5rem' }}>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(3, 1fr)', 
-                gap: '1rem',
-                textAlign: 'center'
-              }}>
-                {keyMetrics.map((metric, index) => (
-                  <div key={index}>
-                    <div style={{ 
-                      color: 'var(--midcentury-orange)',
-                      marginBottom: '0.5rem'
-                    }}>
-                      {metric.icon}
-                    </div>
-                    <div style={{ 
-                      fontSize: '1rem', 
-                      fontWeight: 'bold',
-                      color: 'var(--text-dark)',
-                      marginBottom: '0.25rem'
-                    }}>
-                      {metric.value}
-                    </div>
-                    <div style={{ 
-                      fontSize: '0.75rem', 
-                      color: 'var(--text-light)'
-                    }}>
-                      {metric.label}
-                    </div>
-                  </div>
-                ))}
+                <span>Kuala Lumpur, Malaysia</span>
               </div>
             </div>
           </div>
@@ -168,7 +124,7 @@ const About = () => {
                   <ArrowRight size={14} />
                 </a>
               </div>
-              
+
               <div style={{ position: 'relative' }}>
                 <div style={{
                   position: 'absolute',
