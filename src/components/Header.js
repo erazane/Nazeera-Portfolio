@@ -21,7 +21,7 @@ const Header = () => {
     { name: 'Certificates', href: '#certificates' },
     { name: 'Contact', href: '#contact' },
     // PDF download - place your CV at public/CV_NazeeraNasharuddin_2026.pdf
-    { name: 'Download CV', href: '/CV_NazeeraNasharuddin_2026.pdf' }
+    { name: 'Download CV', href: '/Nazeera_Nasharuddin_ATS_CV.pdf' }
   ];
 
   const scrollToSection = (href) => {

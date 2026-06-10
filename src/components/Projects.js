@@ -31,7 +31,7 @@ const Projects = () => {
       description: "A web application for university students to book consultations with advisors, featuring a clean UI and calendar integration.",
       technologies: ["Java", "React", "MYSQL", "Spring Boot"],
       image: "/images/Project3.jpg",
-      githubUrl: "https://github.com/constance/weather-app",
+      githubUrl: "https://github.com/erazane/UniConsult",
       // liveUrl: "https://constance-weather.netlify.app"
     },
     {
@@ -40,7 +40,7 @@ const Projects = () => {
       description: "A web application for university students to book consultations with advisors, featuring a clean UI and calendar integration.",
       technologies: ["PHP", "React"],
       image: "/images/Project4.jpg",
-      githubUrl: "https://github.com/constance/weather-app",
+      githubUrl: "https://github.com/erazane/Mekar-Studio",
       // liveUrl: "https://constance-weather.netlify.app"
     },
     {
