@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import Contact from './components/Contact';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -18,6 +18,7 @@ function App() {
       <Skills />
       <Projects />
       <Certificates />
+      <Contact />
       <Footer />
     </div>
   );

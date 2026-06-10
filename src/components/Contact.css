@@ -1,0 +1,66 @@
+/* Contact Section Styling */
+.contact-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--midcentury-cream) 0%, #fdf9f3 50%, var(--midcentury-cream) 100%);
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+  color: var(--midcentury-teal);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--midcentury-teal);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--midcentury-teal);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--midcentury-orange);
+}
+
+.submit-button {
+  padding: 0.75rem 2rem;
+  background: var(--midcentury-teal);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: center;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.submit-button:hover {
+  background: var(--midcentury-orange);
+  transform: translateY(-2px);
+}
