@@ -732,25 +732,26 @@ h2::after {
 }
 
 .embla__slide {
-  flex: 0 0 33.333%;
-  /* 3 slides on large screens */
+  flex: 0 0 100%;
+  /* 1 slide on mobile */
   min-width: 0;
   padding: 0 0.75rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .embla__slide {
-    flex: 0 0 33.333%;
-    /* keep 3 slides on tablet and larger */
+    flex: 0 0 50%;
+    /* 2 slides on small tablets */
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
   .embla__slide {
     flex: 0 0 33.333%;
-    /* keep 3 slides on mobile */
+    /* 3 slides on larger screens */
   }
 }
+
 
 
 .card {

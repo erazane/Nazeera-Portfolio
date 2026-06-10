@@ -61,7 +61,7 @@ const Projects = () => {
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
             {projects.map((project) => (
-              <div className="embla__slide" key={project.id} style={{ flex: '0 0 33.333%' }}>
+              <div className="embla__slide" key={project.id}>
                 <div className="card">
                   <div style={{
                     height: '200px',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Award, ExternalLink, Calendar, Building, Star, Zap, Trophy } from 'lucide-react';
 
 const Certificates = () => {
@@ -81,7 +81,16 @@ const Certificates = () => {
       default: return '#2a5d67';
     }
   };
-
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState('');
+  const openLightbox = (src) => {
+    setLightboxImg(src);
+    setLightboxOpen(true);
+  };
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setLightboxImg('');
+  };
   return (
     <div className="certificates-section-wrapper">
       <style>{`
@@ -110,6 +119,45 @@ const Certificates = () => {
         }
         .cert-pdf-link:hover {
           background: var(--midcentury-orange);
+        }
+        /* Responsive grids */
+        .featured-grid, .certificates-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 1.5rem;
+        }
+        .cert-card, .featured-cert-card {
+          background: white;
+          padding: 1rem;
+          border-radius: 12px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        /* Lightbox modal */
+        .lightbox {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.9);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2000;
+        }
+        .lightbox img {
+          max-width: 90vw;
+          max-height: 90vh;
+          border-radius: 8px;
+        }
+        .lightbox-close {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          font-size: 2rem;
+          color: #fff;
+          cursor: pointer;
         }
       `}</style>
       <section id="certificates" className="certificates-section">
@@ -140,7 +188,7 @@ const Certificates = () => {
                   {cert.image && cert.image.endsWith('.pdf') ? (
                     <a href={cert.image} target="_blank" rel="noopener noreferrer" className="cert-pdf-link">View Document</a>
                   ) : (
-                    <img src={cert.image} alt={cert.title} className="cert-image" />
+                    <img src={cert.image} alt={cert.title} className="cert-image" onClick={() => openLightbox(cert.image)} style={{ cursor: 'pointer' }} />
                   )}
                   <div className="cert-badge">
                     <Award size={20} />
@@ -176,16 +224,6 @@ const Certificates = () => {
                       <span key={index} className="skill-tag">{skill}</span>
                     ))}
                   </div>
-
-                  <a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cert-link"
-                  >
-                    <ExternalLink size={16} />
-                    View Certificate
-                  </a>
                 </div>
               ))}
             </div>
@@ -207,7 +245,7 @@ const Certificates = () => {
                   {cert.image && cert.image.endsWith('.pdf') ? (
                     <a href={cert.image} target="_blank" rel="noopener noreferrer" className="cert-pdf-link">View Document</a>
                   ) : (
-                    <img src={cert.image} alt={cert.title} className="cert-image" />
+                    <img src={cert.image} alt={cert.title} className="cert-image" onClick={() => openLightbox(cert.image)} style={{ cursor: 'pointer' }} />
                   )}
                   <div className="cert-header">
                     <div className="cert-icon">
@@ -245,7 +283,15 @@ const Certificates = () => {
 
         </div>
       </section>
+      {lightboxOpen && (
+        <div className="lightbox" onClick={closeLightbox}>
+          <span className="lightbox-close" onClick={closeLightbox}>&times;</span>
+          <img src={lightboxImg} alt="Certificate" />
+        </div>
+      )}
     </div>
+
+
   );
 };
 
