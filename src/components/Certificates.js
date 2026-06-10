@@ -5,62 +5,68 @@ const Certificates = () => {
   const certificatesList = [
     {
       id: 1,
-      title: "Frontend Development Certification",
-      issuer: "FreeCodeCamp",
-      date: "March 2023",
-      link: "https://www.freecodecamp.org/certification/yourusername/frontend-development",
-      skills: ["React", "JavaScript", "CSS3", "HTML5"],
-      level: "Advanced",
+      title: "App Development with Swift  Associate",
+      image: "/images/swift.jpeg",
+      issuer: "Certiport",
+      date: "August 2024",
+      // link: "https://www.credly.com/badges/95e69af9-0a3b-4cec-b390-f9e0d3b1e6fd/linked_in_profile",
+      skills: ["Swift", "Xcode"],
+      level: "Intermediate",
       featured: true
     },
     {
       id: 2,
-      title: "JavaScript Algorithms and Data Structures",
-      issuer: "FreeCodeCamp",
-      date: "June 2022",
-      link: "https://www.freecodecamp.org/certification/yourusername/javascript-algorithms-and-data-structures",
-      skills: ["Algorithms", "Data Structures", "Problem Solving"],
+      title: "Mern FullStack Developer",
+      image: "/images/mern.png",
+      issuer: "Logical Operations",
+      date: "August 2025",
+      // link: "https://www.freecodecamp.org/certification/yourusername/javascript-algorithms-and-data-structures",
+      skills: ["Mongo", "Express", "React", "Node"],
       level: "Intermediate",
       featured: true
     },
     {
       id: 3,
-      title: "Responsive Web Design",
-      issuer: "FreeCodeCamp",
+      title: "CGM Academy for Youth ",
+      image: "/images/cgm.jpeg",
+      issuer: "Coursera",
       date: "January 2022",
-      link: "https://www.freecodecamp.org/certification/yourusername/responsive-web-design",
-      skills: ["CSS Grid", "Flexbox", "Media Queries"],
-      level: "Intermediate",
+      // link: "https://www.freecodecamp.org/certification/yourusername/responsive-web-design",
+      skills: ["Management", "Agile", "Scrum", "Planning"],
+      level: "Beginner",
       featured: false
     },
     {
       id: 4,
-      title: "React & Redux Certification",
-      issuer: "Meta",
-      date: "September 2023",
+      title: "Foundations In CyberSecurity",
+      image: "/images/Cyber.jpeg",
+      issuer: "Coursera",
+      date: "July 2025",
       link: "#",
-      skills: ["React", "Redux", "Hooks", "State Management"],
-      level: "Advanced",
+      skills: ["CyberSecurity", "Networking", "Cryptography"],
+      level: "Beginner",
       featured: true
     },
     {
       id: 5,
-      title: "UI/UX Design Principles",
-      issuer: "Google",
-      date: "April 2023",
+      title: "AI For My Future",
+      image: "/images/ai.jpeg",
+      issuer: "Microsoft",
+      date: "July 2025",
       link: "#",
-      skills: ["Figma", "Wireframing", "User Research"],
-      level: "Intermediate",
+      skills: ["AI", "ML", "Data Science"],
+      level: "Beginner",
       featured: false
     },
     {
       id: 6,
-      title: "Backend Development",
-      issuer: "The Odin Project",
-      date: "November 2022",
+      title: "Backend Career Essentials in Sustainable Tech ",
+      image: "/images/sustech.png",
+      issuer: "Microsft and LinkedIn",
+      date: "May 2025",
       link: "#",
-      skills: ["Node.js", "Express", "MongoDB"],
-      level: "Intermediate",
+      skills: ["CRM", "Sustainable Tech", "ESG"],
+      level: "Beginner",
       featured: false
     }
   ];
@@ -69,7 +75,7 @@ const Certificates = () => {
   const otherCerts = certificatesList.filter(cert => !cert.featured);
 
   const getLevelColor = (level) => {
-    switch(level) {
+    switch (level) {
       case 'Advanced': return '#c44536';
       case 'Intermediate': return '#d4af37';
       default: return '#2a5d67';
@@ -78,6 +84,34 @@ const Certificates = () => {
 
   return (
     <div className="certificates-section-wrapper">
+      <style>{`
+        .certificates-section-wrapper {
+          background: linear-gradient(135deg, var(--midcentury-cream) 0%, #f0e6d2 100%);
+          position: relative;
+          overflow: hidden;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+        }
+        .cert-image {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+        }
+        .cert-pdf-link {
+          display: inline-block;
+          margin-bottom: 1rem;
+          padding: 0.5rem 1rem;
+          background: var(--midcentury-teal);
+          color: white;
+          border-radius: 6px;
+          text-decoration: none;
+        }
+        .cert-pdf-link:hover {
+          background: var(--midcentury-orange);
+        }
+      `}</style>
       <section id="certificates" className="certificates-section">
         <div className="certificates-container">
           <h2>Certifications & Achievements</h2>
@@ -87,8 +121,8 @@ const Certificates = () => {
 
           {/* Featured Certificates Grid */}
           <div className="featured-certificates">
-            <h3 style={{ 
-              textAlign: 'center', 
+            <h3 style={{
+              textAlign: 'center',
               color: 'var(--midcentury-teal)',
               marginBottom: '2rem',
               display: 'flex',
@@ -99,23 +133,28 @@ const Certificates = () => {
               <Trophy size={24} />
               Featured Certifications
             </h3>
-            
+
             <div className="featured-grid">
               {featuredCerts.map((cert) => (
                 <div key={cert.id} className="featured-cert-card">
+                  {cert.image && cert.image.endsWith('.pdf') ? (
+                    <a href={cert.image} target="_blank" className="cert-pdf-link">View Document</a>
+                  ) : (
+                    <img src={cert.image} alt={cert.title} className="cert-image" />
+                  )}
                   <div className="cert-badge">
                     <Award size={20} />
                   </div>
-                  
+
                   {cert.featured && (
                     <div className="featured-tag">
                       <Star size={14} fill="currentColor" />
                       Featured
                     </div>
                   )}
-                  
+
                   <h3>{cert.title}</h3>
-                  
+
                   <div className="cert-meta">
                     <div className="meta-item">
                       <Building size={16} />
@@ -138,9 +177,9 @@ const Certificates = () => {
                     ))}
                   </div>
 
-                  <a 
-                    href={cert.link} 
-                    target="_blank" 
+                  <a
+                    href={cert.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="cert-link"
                   >
@@ -154,24 +193,29 @@ const Certificates = () => {
 
           {/* Other Certificates */}
           <div className="other-certificates">
-            <h3 style={{ 
-              textAlign: 'center', 
+            <h3 style={{
+              textAlign: 'center',
               color: 'var(--midcentury-teal)',
               marginBottom: '2rem'
             }}>
               Additional Certifications
             </h3>
-            
+
             <div className="certificates-grid">
               {otherCerts.map((cert) => (
                 <div key={cert.id} className="cert-card">
+                  {cert.image && cert.image.endsWith('.pdf') ? (
+                    <a href={cert.image} target="_blank" className="cert-pdf-link">View Document</a>
+                  ) : (
+                    <img src={cert.image} alt={cert.title} className="cert-image" />
+                  )}
                   <div className="cert-header">
                     <div className="cert-icon">
                       <Award size={18} />
                     </div>
                     <h4>{cert.title}</h4>
                   </div>
-                  
+
                   <div className="cert-details">
                     <div className="detail-item">
                       <Building size={14} />
@@ -186,9 +230,9 @@ const Certificates = () => {
                     </div>
                   </div>
 
-                  <a 
-                    href={cert.link} 
-                    target="_blank" 
+                  <a
+                    href={cert.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="view-link"
                   >
@@ -206,3 +250,5 @@ const Certificates = () => {
 };
 
 export default Certificates;
+
+
