@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { GitBranch, Github, Linkedin, ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   
-  const titles = ['Frontend Developer', 'UI/UX Designer', 'React Specialist', 'Creative Problem Solver'];
+
   
   useEffect(() => {
+    const titles = ['Frontend Developer', 'UI/UX Designer', 'React Specialist', 'Creative Problem Solver'];
     const currentTitle = titles[currentIndex];
     
     const timeout = setTimeout(() => {
@@ -32,7 +33,7 @@ const Hero = () => {
     }, isDeleting ? 50 : 100);
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentIndex, titles]);
+  }, [displayText, isDeleting, currentIndex]);
 
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });

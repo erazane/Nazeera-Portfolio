@@ -37,8 +37,8 @@ const Header = () => {
       position: 'fixed',
       top: 0,
       width: '100%',
-      background: 'linear-gradient(135deg, var(--midcentury-cream) 0%,  #f0e6d2 50%, var(--midcentury-cream) 100%)',
-      background: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
+      background: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'linear-gradient(135deg, var(--midcentury-cream) 0%,  #f0e6d2 50%, var(--midcentury-cream) 100%)',
+    
       backdropFilter: 'blur(10px)',
       zIndex: 1000,
       transition: 'all 0.3s ease',

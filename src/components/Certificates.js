@@ -138,7 +138,7 @@ const Certificates = () => {
               {featuredCerts.map((cert) => (
                 <div key={cert.id} className="featured-cert-card">
                   {cert.image && cert.image.endsWith('.pdf') ? (
-                    <a href={cert.image} target="_blank" className="cert-pdf-link">View Document</a>
+                    <a href={cert.image} target="_blank" rel="noopener noreferrer" className="cert-pdf-link">View Document</a>
                   ) : (
                     <img src={cert.image} alt={cert.title} className="cert-image" />
                   )}
@@ -205,7 +205,7 @@ const Certificates = () => {
               {otherCerts.map((cert) => (
                 <div key={cert.id} className="cert-card">
                   {cert.image && cert.image.endsWith('.pdf') ? (
-                    <a href={cert.image} target="_blank" className="cert-pdf-link">View Document</a>
+                    <a href={cert.image} target="_blank" rel="noopener noreferrer" className="cert-pdf-link">View Document</a>
                   ) : (
                     <img src={cert.image} alt={cert.title} className="cert-image" />
                   )}
