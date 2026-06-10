@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { GitBranch, Github, Linkedin, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   
-
+  const titles = useMemo(() => ['Frontend Developer', 'UI/UX Designer', 'React Specialist', 'Creative Problem Solver'], []);
   
   useEffect(() => {
-    const titles = ['Frontend Developer', 'UI/UX Designer', 'React Specialist', 'Creative Problem Solver'];
+  
     const currentTitle = titles[currentIndex];
     
     const timeout = setTimeout(() => {
