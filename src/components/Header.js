@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import './Header.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,27 +34,9 @@ const Header = () => {
   };
 
   return (
-    <header style={{
-      position: 'fixed',
-      top: 0,
-      width: '100%',
-      background: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'linear-gradient(135deg, var(--midcentury-cream) 0%,  #f0e6d2 50%, var(--midcentury-cream) 100%)',
-    
-      backdropFilter: 'blur(10px)',
-      zIndex: 1000,
-      transition: 'all 0.3s ease',
-      borderBottom: '1px solid rgba(141, 120, 106, 0.1)',
-      boxShadow: isScrolled ? '0 2px 20px rgba(0,0,0,0.1)' : 'none'
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '1rem 2rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
-        <div style={{
+    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="header-inner">
+        <div className="logo" style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: '1.5rem',
           fontWeight: '600',
@@ -61,12 +44,8 @@ const Header = () => {
         }}>
           Nazeera Nashar
         </div>
-        
-        <nav style={{
-          display: 'flex',
-          gap: '2rem',
-          alignItems: 'center'
-        }}>
+
+        <nav className="nav-links">
           {navItems.map((item) => {
             const isPdf = typeof item.href === 'string' && item.href.toLowerCase().endsWith('.pdf');
             if (isPdf) {
@@ -77,41 +56,17 @@ const Header = () => {
                   download
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    color: 'var(--text-dark)',
-                    textDecoration: 'none',
-                    fontSize: '1rem',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    padding: '0.5rem 0',
-                    fontFamily: 'inherit'
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--midcentury-orange)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-dark)'; }}
+                  className="nav-item"
                 >
                   {item.name}
                 </a>
               );
             }
-
             return (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--text-dark)',
-                  fontSize: '1rem',
-                  fontWeight: '500',
-                  cursor: 'pointer',
-                  padding: '0.5rem 0',
-                  position: 'relative',
-                  transition: 'color 0.3s ease',
-                  fontFamily: 'inherit'
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--midcentury-orange)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-dark)'; }}
+                className="nav-item"
               >
                 {item.name}
               </button>
@@ -119,19 +74,46 @@ const Header = () => {
           })}
         </nav>
 
-        <button 
+        <button
+          className="menu-button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            color: 'var(--midcentury-teal)',
-            cursor: 'pointer'
-          }}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+
+      {/* Mobile overlay menu */}
+      {isMenuOpen && (
+        <div className="mobile-nav">
+          {navItems.map((item) => {
+            const isPdf = typeof item.href === 'string' && item.href.toLowerCase().endsWith('.pdf');
+            if (isPdf) {
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mobile-nav-item"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              );
+            }
+            return (
+              <button
+                key={item.name}
+                onClick={() => scrollToSection(item.href)}
+                className="mobile-nav-item"
+              >
+                {item.name}
+              </button>
+            );
+          })}
+        </div>
+      )}
     </header>
   );
 };
